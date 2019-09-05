@@ -1,4 +1,7 @@
+use File::Copy;
+
 $IN_DIR="D:/\Development\/PerlScripts/\data/\in";
+$OUT_DIR="D:/\Development\/PerlScripts/\data\/out";
 
 ($mon, $year) = (localtime)[4, 5];
 
@@ -42,4 +45,31 @@ if (<$IN_DIR/$filter>|<$IN_DIR/$filter2> ) {
 my @files = glob( "{$filter,$filter2}");
 foreach my $file (@files) {
 	printf("%s\n", $file);
+}
+
+############################################################
+# rename worked to move a file
+# copy() and move() only worked when adding the following
+#             use File::Copy;
+############################################################
+printf("========== Test 5 ==========\n");
+my @files = (
+  "012.EXP",
+  "012B.exp",
+  "123.exp",
+  "fi1.EXP",
+  "fi2 .EXP",
+  "file 3.EXP.EXP",
+  "I do not exist"
+);
+
+foreach my $file (@files) {
+	if ( -e $file ) {
+		printf("%s\n", $file);
+# OK		copy ($file, $OUT_DIR);
+# OK		move ($file, $OUT_DIR);
+# OK		rename "$file", "$OUT_DIR/$file";
+		copy ($file, "$OUT_DIR\/$file");
+		exit;
+	}
 }
