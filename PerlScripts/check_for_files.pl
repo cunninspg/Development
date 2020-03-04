@@ -13,6 +13,8 @@ printf("=======================\n");
 chdir $IN_DIR;
 print "$IN_DIR\n";
 
+#exec(dir);
+
 #my $f="^[a-zA-Z0-0]*.EXP$";
 #my $f='^[a-zA-Z0-0]*.EXP$';
 #print "$f \n";
@@ -46,6 +48,10 @@ my @files = glob( "{$filter,$filter2}");
 foreach my $file (@files) {
 	printf("%s\n", $file);
 }
+my $file="01*.EXP";
+if (<$IN_DIR/$file> ) {
+	printf("WE HAVE $file\n");
+}
 
 ############################################################
 # rename worked to move a file
@@ -69,7 +75,7 @@ foreach my $file (@files) {
 # OK		copy ($file, $OUT_DIR);
 # OK		move ($file, $OUT_DIR);
 # OK		rename "$file", "$OUT_DIR/$file";
-		copy ($file, "$OUT_DIR\/$file");
+#		copy ($file, "$OUT_DIR\/$file");
 		exit;
 	}
 }

@@ -1,0 +1,10 @@
+#
+# Testing String Manipulation
+#
+#
+#
+my $my_string ="Pinging albul.hilton.com [127.17.68.164] with 32 bytes of data:";
+
+print $my_string;
+
+@my_string=split(/[|]/,$my_string);
